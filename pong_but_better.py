@@ -61,14 +61,23 @@ while run:
         ball_vel_x, ball_vel_y = 0.7, 0.7
 
     
-
-
-
     #movements
     ball_x += ball_vel_x
     ball_y += ball_vel_y
     right_paddle_y += right_paddle_vel
     left_paddle_y += left_paddle_vel
+
+    #paddle's movement controls
+    # making sure the paddles don't go off the screen
+    if left_paddle_y >= HEIGHT - paddle_height:
+        left_paddle_y = HEIGHT - paddle_height
+    if left_paddle_y <= 0:
+        left_paddle_y = 0
+    if right_paddle_y >= HEIGHT - paddle_height:
+        right_paddle_y = HEIGHT - paddle_height
+    if right_paddle_y <= 0:
+        right_paddle_y = 0
+
 
 
 #drawing of objects
