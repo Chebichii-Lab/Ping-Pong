@@ -24,4 +24,6 @@ while run:
             run = False
 
 #drawing of objects
-    pygame.draw.circle(wn. BLUE, (ball_x, ball_y), radius )
+    pygame.draw.circle(wn, BLUE, (ball_x, ball_y), radius )
+    #updating the position of the ball
+    pygame.display.update()
