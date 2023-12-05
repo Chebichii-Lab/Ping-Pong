@@ -60,13 +60,6 @@ while run:
         ball_x, ball_y = WIDTH/2 - radius, HEIGHT/2 -radius
         ball_vel_x, ball_vel_y = 0.7, 0.7
 
-    
-    #movements
-    ball_x += ball_vel_x
-    ball_y += ball_vel_y
-    right_paddle_y += right_paddle_vel
-    left_paddle_y += left_paddle_vel
-
     #paddle's movement controls
     # making sure the paddles don't go off the screen
     if left_paddle_y >= HEIGHT - paddle_height:
@@ -77,6 +70,27 @@ while run:
         right_paddle_y = HEIGHT - paddle_height
     if right_paddle_y <= 0:
         right_paddle_y = 0
+
+    #paddle collisions
+    #left paddle
+    if left_paddle_x <= ball_x <= left_paddle_x + paddle_width:
+        if left_paddle_y <= ball_y <= left_paddle_y + paddle_height:
+            ball_x = left_paddle_x + paddle_width
+            ball_vel_x *= -1
+
+    #right paddle
+    if right_paddle_x <= ball_x <= right_paddle_x + paddle_width:
+        if right_paddle_y <= ball_y <= right_paddle_y + paddle_height:
+            ball_x = right_paddle_x
+            ball_vel_x *= -1
+
+    #movements
+    ball_x += ball_vel_x
+    ball_y += ball_vel_y
+    right_paddle_y += right_paddle_vel
+    left_paddle_y += left_paddle_vel
+
+    
 
 
 
