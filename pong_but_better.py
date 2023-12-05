@@ -20,12 +20,14 @@ radius = 15
 ball_x, ball_y = WIDTH/2 - radius, HEIGHT/2 - radius
 
 #ball velocity
-ball_vel_x, ball_vel_y = 1,1
+ball_vel_x, ball_vel_y = 0.7, 0.7
 
 #paddle dimensions
 paddle_width, paddle_height = 20, 120
 left_paddle_y = right_paddle_y = HEIGHT/2 -paddle_height/2
 left_paddle_x, right_paddle_x = 100 - paddle_width/2, WIDTH -(100 - paddle_width/2)
+
+
 
 #mainloop
 while run:
@@ -33,6 +35,21 @@ while run:
     for i in pygame.event.get(): 
         if i.type == pygame.QUIT:
             run = False
+
+    #ball's movement controls
+    if ball_y <= 0 + radius or ball_y >= HEIGHT -radius:
+        ball_vel_y *= -1
+    if ball_x >= WIDTH - radius:
+        ball_x, ball_y = WIDTH/2 -radius, HEIGHT/2 -radius
+        ball_vel_x *= -1
+        ball_vel_y *= -1
+    if ball_x <= 0 + radius:
+        ball_x, ball_y = WIDTH/2 - radius, HEIGHT/2 -radius
+        ball_vel_x, ball_vel_y = 0.7, 0.7
+
+    
+
+
 
     #movements
     ball_x += ball_vel_x
