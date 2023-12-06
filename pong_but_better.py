@@ -332,4 +332,18 @@ while run:
 
     if right_gadget == 1:
         pygame.draw.circle(wn, WHITE, (right_paddle_x + 10, right_paddle_y + 10), 4)
+
+    #endscreen
+    winning_font = pygame.font.SysFont('callibri', 100)
+    if player_1 >= 3:
+        wn.fill(BLACK)
+        endscreen = winning_font.render("PLAYER_1 WON!!!" , True, WHITE)
+        wn.blit(endscreen, (200, 250))
+
+    if player_2 >= 3:
+        wn.fill(BLACK)
+        endscreen = winning_font.render("PLAYER_2 WON!!!" , True, WHITE)
+        wn.blit(endscreen, (200, 250))
+
+    
     pygame.display.update()
